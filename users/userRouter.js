@@ -25,6 +25,16 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
 
+    const {id} = req.params;
+    User.getById(id)
+    .then(user => {
+        if (user) {
+            res.status(200).json(user);
+        } else {
+            res.status(404).json({err: 'this id doesnt exist'});
+        }
+    });
+
 });
 
 router.get('/:id/posts', (req, res) => {
