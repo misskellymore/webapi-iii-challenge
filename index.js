@@ -1,5 +1,13 @@
 // code away!
 
+require('dotenv').config();
+
 const server = require('./server.js');
 
-server.listen(4000, () => console.log('server listening on port 4000'))
+
+// ask tl about process
+const port = process.env.PORT;
+
+server.listen(port, () => {
+    console.log(`\n*** Server running on http://localhost:${port}`);
+});
